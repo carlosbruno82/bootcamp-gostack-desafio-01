@@ -33,12 +33,12 @@ server.post('/projects', (req, res) => {
 
   project.push({ id, title, tasks })  
 
-  res.json(project)
+  return res.json(project)
 })
 
 //GET
 server.get('/projects', (req, res) => {
-  res.json(project)
+  return res.json(project)
 })
 
 //PUT
@@ -51,7 +51,7 @@ server.put('/projects/:id', checkId, (req, res) => {
 
   findId.title = title
 
-  res.json(project)
+  return res.json(project)
 
 })
 
@@ -63,7 +63,7 @@ server.delete('/projects/:id', checkId, (req, res) => {
   
   project.splice(findId, 1)
 
-  res.send()
+  return res.send()
 })
 
 // POST  tasks
@@ -74,7 +74,7 @@ server.post('/projects/:id/tasks', checkId, (req, res) => {
   const findId = project.find(obj => obj.id == id)
   findId.tasks = title
 
-  res.json(project)
+  return res.json(project)
 })
 
 server.listen(3000)
